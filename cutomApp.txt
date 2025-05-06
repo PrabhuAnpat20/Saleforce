@@ -1,0 +1,4 @@
+1.object Manager 
+2.fields and relation
+3.create tab
+4.create app
