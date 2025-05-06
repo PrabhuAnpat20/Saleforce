@@ -1,0 +1,60 @@
+<apex:page controller="calculator2">
+<apex:form >
+   <apex:inputText value="{!num1}" label="num 1" />
+   <apex:inputText value="{!num2}" label="num2"/>
+   
+   <apex:selectList value="{!type}" size="1">
+       <apex:selectOption itemValue="add" itemLabel="add"/>
+       <apex:selectOption itemValue="sub" itemLabel="sub"/>
+   </apex:selectList>
+   <apex:commandButton value="calc"  action="{!calc}" reRender="res"/>
+   <apex:outputPanel id="res">
+       <apex:outputText value="{!res}"/>
+   </apex:outputPanel>
+</apex:form>
+  
+</apex:page>
+
+
+
+
+public class ScientificCalculator {
+    public Decimal num1 { get; set; }
+    public Decimal num2 { get; set; }
+    public Decimal res  { get; set; }
+    public String type  { get; set; }
+
+    public void calc() {
+        if (type == 'add') {
+            res = num1 + num2;
+        } else if (type == 'sub') {
+            res = num1 - num2;
+        } else if (type == 'mul') {
+            res = num1 * num2;
+        } else if (type == 'div') {
+            if (num2 != 0) {
+                res = num1 / num2;
+            } else {
+                throw new ArithmeticException('Division by zero is not allowed.');
+            }
+        } else if (type == 'mod') {
+            res = Math.mod(num1, num2);
+        } else if (type == 'pow') {
+            res = Math.pow(num1, num2); // num1^num2
+        } else if (type == 'sqrt') {
+            if (num1 >= 0) {
+                res = Math.sqrt(num1);
+            } else {
+                throw new ArithmeticException('Cannot calculate square root of a negative number.');
+            }
+        } else if (type == 'sin') {
+            res = Math.sin(num1);
+        } else if (type == 'cos') {
+            res = Math.cos(num1);
+        } else if (type == 'tan') {
+            res = Math.tan(num1);
+        } else {
+            throw new IllegalArgumentException('Invalid operation type.');
+        }
+    }
+}

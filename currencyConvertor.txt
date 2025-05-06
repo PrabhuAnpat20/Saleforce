@@ -1,0 +1,38 @@
+public class CurrConvert{
+
+      public Decimal input{get;set;}
+      public Decimal output{get;set;}
+      public String  type{get;set;}
+      
+      
+      public void convert(){
+            if(type=='RTD'){
+                  output=input*80;
+            }
+            else{
+                  output=input/80;
+            }
+      }
+}
+
+
+
+<apex:page controller="CurrConvert">
+
+  <h1>Currency Convertor</h1>
+  <apex:form>
+       <apex:inputText value="{!input}"/>
+       <apex:selectRadio value="{!type}">
+          <apex:selectOption itemLabel="to Dollor" itemValue="RTD"/>
+          <apex:selectOption itemLabel="to Ruppee" itemValue="DTR"/>
+       </apex:selectRadio>
+       <apex:commandButton value="convert" action="{!convert}" reRender="res"/>
+       
+       <apex:outputPanel id="res">
+       <apex:outputText value="{!output}"/>
+       </apex:outputPanel>
+  </apex:form>
+  
+  
+</apex:page>
+
