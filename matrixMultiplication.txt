@@ -1,0 +1,42 @@
+public class mult {
+    public static void matMult(){
+        List<List<Integer>>mat1=new List<List<Integer>>{
+            new List<Integer>{1,2,3},
+            new List<Integer>{0,1,2}   
+        };
+        List<List<Integer>>mat2=new List<List<Integer>>{
+            new List<Integer>{1,2},
+            new List<Integer>{0,1},
+            new List<Integer>{1,1}    
+        };
+        Integer r1=mat1.size();
+        Integer c1=mat1[0].size();   
+        Integer r2=mat2.size();
+        Integer c2=mat2[0].size();
+        
+        if(c1!=r2){
+            System.debug('cant muliply');
+            return;
+        }
+        
+        List<List<Integer>>result=new List<List<Integer>>();
+        for(Integer i=0;i<r1;i++){
+            List<Integer>row=new List<Integer>();
+            for(Integer j=0;j<c2;j++){
+                row.add(0);
+            }
+            result.add(row);
+        }
+        for(Integer i=0;i<r1;i++){
+            for(Integer j=0;j<c2;j++){
+               
+                for(Integer k=0;k<c1;k++){
+                    result[i][j]+=mat1[i][k]*mat2[k][j];
+                }
+            }
+        }
+        for(List<Integer>row:result){
+            System.debug(row);
+        }
+    }
+}

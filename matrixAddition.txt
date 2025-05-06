@@ -1,0 +1,28 @@
+public class matrixAdd {
+    public static void addMatrices() {
+        List<List<Integer>> matrix1 = new List<List<Integer>>{
+            new List<Integer>{1, 2, 3},
+            new List<Integer>{4, 5, 6}
+        };
+
+        List<List<Integer>> matrix2 = new List<List<Integer>>{
+            new List<Integer>{7, 8, 9},
+            new List<Integer>{10, 11, 12}
+        };
+
+        List<List<Integer>> result = new List<List<Integer>>();
+
+        for (Integer i = 0; i < matrix1.size(); i++) {
+            List<Integer> row = new List<Integer>();
+            for (Integer j = 0; j < matrix1[i].size(); j++) {
+                row.add(matrix1[i][j] + matrix2[i][j]);
+            }
+            result.add(row);
+        }
+
+        // Display result
+        for (List<Integer> row : result) {
+            System.debug(row);
+        }
+    }
+}

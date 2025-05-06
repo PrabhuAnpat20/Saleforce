@@ -1,0 +1,22 @@
+public class add {
+ public static void sum(List<Integer> arr) {
+        if (arr == null) {
+            System.debug('Error: Input array is null.');
+             
+        }
+
+        Integer sum = 0;
+        for (Integer num : arr) {
+            sum += num;
+        }
+        System.debug(sum);
+    }
+}
+
+
+List<Integer> arr=new List<Integer>();
+arr.add(1);
+arr.add(2);
+arr.add(3);
+
+add.sum(arr);
